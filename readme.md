@@ -36,6 +36,7 @@ This is my ([@jshrc](https://github.com/jshrc)) first fully fleshed out node web
 5. Build the backend - there is migration to setup all all the necessary tables, and seeders to initialize your first admin account, and an example quiz.  
 
   * DB Install: `knex migrate:latest`
+
   * Seeders:
     * Admin account: the following seeder will walk you through creating an admin account
       `knex seed:run --specific=admin_user_account.js`  
@@ -48,7 +49,7 @@ This is my ([@jshrc](https://github.com/jshrc)) first fully fleshed out node web
 
     `node server/httpServer.js`
 
-    The API and Socket.IO side can be served with:
+    The API and Socket.IO side need to be served with:
 
     `node server/server.js`
 
