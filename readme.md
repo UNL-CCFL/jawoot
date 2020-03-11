@@ -72,3 +72,4 @@ In no particular order:
  * More question types
  * Flesh out documentation better
  * Responsive backend design
+ * Full PWA Support
