@@ -109,8 +109,7 @@ io.on('connection', function(socket){
           player_count: Object.keys(ActiveSessions[params.session_code].players).length,
         }).then();
 
-        //remove from active sessions after so long
-        //recentlyFinishedSessions?
+        delete ActiveSessions[params.session_code];
       }
     });
 
@@ -304,9 +303,6 @@ function clientDisconnected(io) {
   console.log('Client disconnected, count: '+clientCount);
 }
 
-
-//require("./db.js");
-
 app = express();
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({ extended: true }));
@@ -326,15 +322,6 @@ app.use(session({
   resave: true,
   store: store,
 }));
-
-/*
-app.options("*", function(req, res, next){
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-  res.send(200);
-});
-*/
 
 app.use(require('./routes'));
 
