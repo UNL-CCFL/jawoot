@@ -1,0 +1,264 @@
+#player {
+  margin: 0 auto;
+  width: 100%;
+
+  .slide {
+    min-height: 92vh;
+    h1, h2 {
+      color: #fff;
+    }
+  }
+
+  &_header {
+    align-items: center;
+    align-content: center;
+    background: linear-gradient(320deg, #000 0%, #333 100%);
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    height: 8vh;
+    justify-content: space-between;
+    padding: 1rem;
+    h1, h2 {
+      color: #fff;
+      margin: 0;
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+    #player_score, #session_code {
+      background: #fff;
+      color: #222;
+      font-family: montserratsemibold;
+      padding: .5rem 1rem;
+      text-align: center;
+    }
+  }
+  &--game_waiting {
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 1rem 0 1rem;
+    text-shadow: 0 0 3px rgba(0,0,0,.5);
+    #playerCount {
+      font-family: montserratbold;
+      font-size: 1.5rem;
+      text-align: center;
+      width: 100%;
+    }
+    #playerList {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+
+      >div {
+        font-size: 1.5rem;
+        padding: 1rem 1rem 0;
+      }
+      .inactive {
+        opacity: .75;
+        > div {
+          font-size: 1.5rem;
+          font-style: italic;
+        }
+      }
+    }
+    #start_game {
+      height: 3rem;
+      padding: 1rem 2rem;
+    }
+  }
+  #waitingForPlayers {
+    align-self: flex-end;
+    background: linear-gradient(320deg, #000 0%, #333 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    height: 8vh;
+    padding: 0 .5rem;
+    margin: 0 -1rem;
+    text-shadow: 0 0 3px rgba(0,0,0,.5);
+    width: 100vw;
+
+    i {
+      border: 3px solid #fff;
+      border-radius: 100%;
+      box-shadow: 0 0 3px rgba(0,0,0,.5), inset 0 0 3px rgba(0,0,0,.35);
+      display: inline-block;
+      font-size: 1rem;
+      height: 1.85em;
+      margin: 0 .5rem 0 0;
+      padding: .2em 0 0;
+      text-align: center;
+      width: 1.85em;
+    }
+  }
+
+  &--get_ready {
+    h1 {
+      margin-top: 0;
+    }
+  }
+
+  &--question_countdown{
+    align-items:center;
+    padding: 1rem 1vw;
+    #countdown {
+      font-size: 6rem;
+      margin-top: 0;
+      width: 100%;
+    }
+    #question {
+      background: #fff;
+      color: #000;
+      font-family: montserratbold;
+      font-size: 2rem;
+      margin: 0;
+      padding: 2rem 2rem;
+      position: relative;
+      text-shadow: none;
+      &:after{
+        background: #000;
+        bottom: -1rem;
+        content: '';
+        display: block;
+        left: 0;
+        height: 1rem;
+        position: absolute;
+        width: 100%;
+        animation: questionTimerWidth 5s linear 1;
+
+        @keyframes questionTimerWidth {
+          0% {
+            width: 0%
+          }
+
+          100% {
+            width: 100%;
+          }
+        }
+      }
+
+    }
+  }
+
+  &--select_answers {
+    min-height: 92vh;
+    &-answers {
+      align-items: center;
+      color: #fff;
+      display: flex;
+      font-size: 2rem;
+      flex-wrap: wrap;
+      height: 82vh;
+      justify-content: space-around;
+      text-shadow: 0 0 3px rgba(0,0,0,.5);
+
+      button {
+        align-content: center;
+        border: 0;
+        border-radius: 0;
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        height: 31%;
+        min-height: 11rem;
+        text-shadow: 0 0 3px rgba(0,0,0,.5);
+        width: 100%;
+        @import "answerButtonStyles";
+
+        &:before{
+          font-size: 6rem;
+          display: block;
+          height: 50%;
+          margin: 0 0 1rem;
+          min-width: 100%;
+        }
+      }
+
+      &.answers4 {
+        button {
+          height: calc(82vh / 2);
+          width:  50%;
+        }
+      }
+      &.answers3 {
+        button {
+          height: calc(82vh / 3);
+        }
+      }
+      &.answers2 {
+        button {
+          height: calc(82vh / 2);
+        }
+      }
+
+      &.nocountdown{
+        min-height: 92vh;
+        &.answers4 {
+          button {
+            height: calc(92vh / 2);
+            width:  50%;
+          }
+        }
+        &.answers3 {
+          button {
+            height: calc(92vh / 3);
+          }
+        }
+        &.answers2 {
+          button {
+            height: calc(92vh / 2);
+          }
+        }
+      }
+
+    }
+    #answerCountdown {
+      align-items: center;
+      color: #fff;
+      display: flex;
+      font-size: 2rem;
+      font-family: montserratsemibold;
+      height: 10vh;
+      justify-content: center;
+      background: rgba(51,51,51,1) radial-gradient(circle, rgba(17,17,17,1) 50%, rgba(51,51,51,1) 50%) no-repeat center center;
+      background-size: 0;
+      animation: gradientspin 1s linear infinite;
+      width: 100%;
+    }
+  }
+  &--waiting_on_answers {
+    font-size: 3rem;
+    .waiting {
+      font-size: 6rem;
+    }
+  }
+  &--question_result {
+    h1 {
+      margin-top: 0;
+    }
+    i {
+      font-size: 6rem;
+      display: block;
+      animation: wag 1s ease-in-out 2;
+    }
+    #plus_points {
+      background: #fff;
+      box-shadow: 0 0 3px rgba(0,0,0,.5);
+      color: #000;
+      font-size: 3rem;
+      margin: 2rem auto 0;
+      padding: 1rem 2rem;
+      text-shadow: none;
+    }
+  }
+  &--overall_results {
+    @import "medals";
+  }
+}

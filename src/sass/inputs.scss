@@ -1,0 +1,150 @@
+input, select, button, textarea{
+  outline: none;
+}
+input, select, textarea{
+  width: 100%;
+  &:focus{
+    background-color: $inputFocusLight;
+  }
+}
+input[type=radio], input[type=checkbox] {
+  width: auto;
+}
+a.button {
+  color: #fff;
+  &--inverted {
+    color: $orange;
+  }
+}
+button, .button {
+  border: 0;
+  border-radius: 4px;
+  background: linear-gradient(320deg, #222 0%, #666 100%);
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  padding: .75rem 2rem;
+  text-decoration: none;
+
+  i.fas, i.fa {
+    margin-right: .5rem;
+  }
+  &:hover {
+    background: #333;
+  }
+  &:active {
+    background: #555;
+  }
+  &:focus {
+    background: #494949;
+  }
+  &:disabled {
+    opacity: .5;
+  }
+  &.red {
+    background: $redFade;
+    text-shadow: 0 0 2px rgba(0,0,0,.5);
+  }
+  &.blue {
+    background: $blueFade;
+    text-shadow: 0 0 3px rgba(0,0,0,.5);
+  }
+  &.green {
+    background: $greenFade;
+    text-shadow: 0 0 3px rgba(0,0,0,.5);
+  }
+  &.yellow {
+    background: $orangeFade;
+    text-shadow: 0 0 3px rgba(0,0,0,.5);
+  }
+
+  &--warn {
+    background: $orange;
+    color: #fff;
+    &:hover {
+      background: darken($orange, 16%);
+    }
+  }
+  &--inverted {
+    background: none;
+    border: 1px solid rgba(0,0,0,0);
+    color: $orange;
+    text-shadow: none!important;
+    transition: background ease .25s, border ease .25s;
+    &:hover {
+      background: $backgroundOrange;
+      border: 1px solid $borderOrangeLight;
+      border-bottom: 1px solid $borderOrangeDark;
+    }
+    &:active, &:focus {
+      background-color: $inputFocusLight;
+      background-color: $inputFocusLight;
+      border: 1px solid $borderOrangeLight;
+      border-bottom: 1px solid $borderOrangeDark;
+    }
+  }
+}
+
+.form_field{
+  label {
+    display: inline-block;
+    font-weight: bold;
+    margin: 1rem 0 .35rem;
+    width: 100%;
+  }
+  input {
+    border: 1px solid $borderOrangeLight;
+    border-bottom: 1px solid $borderOrangeDark;
+    border-radius: 4px;
+    font-size: 1.25em;
+    margin: .25rem 0;
+    padding: .25em .5em;
+    position: relative;
+
+    &.has_error {
+
+    }
+  }
+  &_error {
+    color: $orange;
+    font-size: 96%;
+  }
+}
+
+.form_controls {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1.5rem 0 0 0;
+
+  .is_saving  {
+    display: inline-block;
+    color: $orange;
+    font-size: 2rem;
+    margin: 0 1rem;
+  }
+
+  >span {
+    margin: 0 1rem;
+  }
+
+}
+
+select {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: #fff;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="292.4" height="292.4"><path fill="%23ff9d84" d="M287 69.4a17.6 17.6 0 0 0-13-5.4H18.4c-5 0-9.3 1.8-12.9 5.4A17.6 17.6 0 0 0 0 82.2c0 5 1.8 9.3 5.4 12.9l128 127.9c3.6 3.6 7.8 5.4 12.8 5.4s9.2-1.8 12.8-5.4L287 95c3.5-3.5 5.4-7.8 5.4-12.8 0-5-1.9-9.2-5.5-12.8z"/></svg>');
+  border: 1px solid $borderOrangeLight;
+  border-bottom: 1px solid $borderOrangeDark;
+  background-position: right .7em top 50%;
+  background-repeat: no-repeat;
+  background-size: .65em auto;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.25em;
+  padding: .25em 2em .25em .5em;
+  position: relative;
+}

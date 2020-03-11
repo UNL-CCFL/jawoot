@@ -1,0 +1,28 @@
+$redFade: linear-gradient(320deg, rgba(170,126,248,1) 0%, rgba(255,110,170,1) 100%);
+$greenFade: linear-gradient(320deg, rgba(27,219,211,1) 0%, rgba(102,238,166,1) 100%);
+$blueFade: linear-gradient(320deg, rgba(141,141,255,1) 0%, rgba(45,222,255,1) 100%);
+$orangeFade: linear-gradient(320deg, rgba(255,141,128,1) 0%, rgba(255,209,35,1) 100%);
+$allFade: linear-gradient(-181deg,
+  rgba(170,126,248,1) 0%, rgba(255,110,170,1) 15%, /* red */
+  rgba(255,141,128,1) 30%, rgba(255,209,35,1) 45%, /* yellow */
+  rgba(27,219,211,1) 60%, rgba(102,238,166,1) 75%, /* green */
+  rgba(141,141,255,1) 90%, rgba(45,222,255,1) 100% /* blue */
+  );
+
+
+$orange: #ff9d84;
+$backgroundOrange: #fffbfa;
+$boxShadowOrange: #ffcec2;
+$borderOrange: #ffedea;
+$borderOrangeLight: #ffe8e2;
+$borderOrangeDark: #ffd4c8;
+
+$inputFocusLight: #fffcf1;
+
+@mixin knockout {
+  background-image: $orangeFade;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

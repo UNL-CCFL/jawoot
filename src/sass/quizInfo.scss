@@ -1,0 +1,80 @@
+
+#quiz_info {
+  max-width: 660px;
+
+  h3 {
+    font-family: montserratregular;
+    font-size: 1.35rem;
+    margin-top: 2rem;
+  }
+  h4, .question_title {
+    margin: 0 1rem 0 0;
+    opacity: .6;
+    min-width: 100%;
+  }
+  #quiz_attempts {
+    margin-top: 1rem;
+  }
+
+  .question {
+    padding: 1rem 2rem 1rem 0 ;
+    position: relative;
+    min-width: 100%;
+
+    &:hover {
+      .question_actions {
+        opacity: 1;
+      }
+    }
+
+    & + .question {
+      border-top: 1px solid $borderOrangeDark;
+    }
+
+  }
+
+  .answers {
+    margin-bottom: 0;
+    padding: 0;
+    .answer {
+      display: flex;
+      justify-content: space-between;
+      padding: .25rem;
+      width: 100%;
+
+      &:nth-child(odd) {
+        background: rgba(200,200,200,.1);
+      }
+
+    }
+
+    .fas {
+      color: $orange;
+      color: transparent;
+      background-image: $orangeFade;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      background-clip: text;
+    }
+    .fa-circle {
+      opacity: .5;
+      filter: grayscale(.5);
+    }
+    .fa-check-circle {
+      opacity: 1;
+    }
+  }
+  .not_complete {
+    text-align: center;
+  }
+
+  .loading {
+    font-size: 1.75rem;
+    padding: 2rem 0;
+    text-align: center;
+    i {
+      display: inline-block;
+      margin: 0 1rem 0 0;
+    }
+  }
+}

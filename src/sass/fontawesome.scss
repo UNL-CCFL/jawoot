@@ -1,0 +1,13 @@
+@import "fontawesome/_variables";
+@import "fontawesome/solid";
+@import "fontawesome/_icons";
+@import "fontawesome/_animated";
+@import "fontawesome/_stacked";
+
+.fa-spinner {
+  display: inline-block;
+}
+
+i.fa, i.fas {
+  font-style: normal;
+}

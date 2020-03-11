@@ -1,0 +1,99 @@
+.medal {
+  position: relative;
+  &_place {
+    align-items: center;
+    background: $redFade;
+    border: .5vh solid rgba(255,255,255,.75);
+    box-shadow: inset 0 0 4px rgba(0,0,0,.25),0 0 4px rgba(0,0,0,.45);
+    border-radius: 100%;
+    color: #fff;
+    text-shadow: 0 0 4px rgba(0,0,0,.35);
+    display: flex;
+    font-size: 5vh;
+    justify-content: center;
+    font-family: montserratbold;
+    height: 12vh;
+    margin: 2rem auto 0;
+    padding: 0 0 0 .5rem;
+    position: relative;
+    width: 12vh;
+    z-index: 10;
+
+    &.st1 {
+      background: $orangeFade;
+    }
+    &.nd2 {
+      background: $blueFade;
+    }
+    &.rd3 {
+      background: $greenFade;
+    }
+  }
+
+  &_ribbons {
+
+    .complete {
+      //background: #999;
+      border-top: 32px solid #999;
+      border-left: 21px solid transparent;
+      border-right: 21px solid transparent;
+      height: 32px;
+      height: 0;
+      left: calc(50% - 70px);
+      position: absolute;
+      top: -32px;
+      width: 140px;
+    }
+
+    &:before, &:after {
+      content: "";
+      background: #aaa;
+      box-shadow: 0 1px 2px rgba(0,0,0,.25);
+      display: block;
+      height: 40px;
+      position: absolute;
+      top: 0px;
+      width: 40px;
+      z-index: 1;
+    }
+    &:before {
+      left: calc(50% - 40px);
+      transform: skew(32deg);
+    }
+    &:after {
+      background: #bbb;
+      right: calc(50% - 40px);
+      transform: skew(-32deg);
+    }
+
+    &__complete {
+      &:before {
+        top: -32px;
+        height: 100px;
+      }
+      &:after {
+        top: -32px;
+        height: 100px;
+      }
+    }
+  }
+  sup {
+    font-size: 2vh;
+  }
+
+  .points {
+    background: #fff;
+    color: #000;
+    font-size: 2rem;
+    font-family: montserratsemibold;
+    margin: 1.5rem 0 1rem;
+    padding: 1rem 2rem;
+    text-shadow: none;
+  }
+
+  .position {
+    font-size: 2rem;
+    font-family: montserratbold;
+  }
+
+}

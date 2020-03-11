@@ -1,0 +1,36 @@
+&:nth-child(1) {
+  background: red;
+  background: $redFade;
+  &:before {
+    font-family: 'Font Awesome 5 Free';
+    content: "\F04B";
+    //play
+  }
+}
+&:nth-child(2) {
+  background: green;
+  background: $greenFade;
+  &:before {
+    font-family: 'Font Awesome 5 Free';
+    content: "\F0C8";
+    //square
+  }
+}
+&:nth-child(3) {
+  background: blue;
+  background: $blueFade;
+  &:before {
+    font-family: 'Font Awesome 5 Free';
+    content: "\F111";
+    //circle
+  }
+}
+&:nth-child(4) {
+  background: yellow;
+  background: $orangeFade;
+  &:before {
+    font-family: 'Font Awesome 5 Free';
+    content: "\F005";
+    //star
+  }
+}

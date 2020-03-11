@@ -1,0 +1,20 @@
+
+#session_info {
+  max-width: 660px;
+  h3 {
+    font-family: montserratregular;
+    font-size: 1.35rem;
+    margin-top: 2rem;
+  }
+  h4, .question_title {
+    margin: 0 1rem 0 0;
+    opacity: .6;
+    min-width: 100%;
+  }
+  #session_player_count {
+    padding-bottom: 1rem;
+  }
+  .not_complete {
+    text-align: center;
+  }
+}

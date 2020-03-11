@@ -1,0 +1,495 @@
+#host--get_ready, #player--get_ready{
+  h1{
+    font-size: 3rem;
+  }
+  .waiting {
+    display: inline-block;
+    font-size: 4rem;
+  }
+}
+
+#host {
+  display: flex;
+  flex-flow: column;
+  min-height: 100%;
+  width: 100%;
+
+  .slide {
+    h1, h2 {
+      color: #fff;
+    }
+  }
+
+  &_header {
+    align-items: center;
+    background: linear-gradient(320deg, #000 0%, #333 100%);
+    color: #fff;
+    display: flex;
+    min-height: 10vh;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+
+    h1, h2 {
+      color: #fff;
+      line-height: 1.35em;
+      margin: 0;
+      max-width: 60%;
+    }
+
+    #joinWith {
+      align-items: center;
+      background: #fff;
+      display: flex;
+      color: #000;
+      font-size: 1.5rem;
+      font-weight: bold;
+      height: 100%;
+      justify-content: center;
+      margin: 0 1rem;
+      padding: 1rem 2rem;
+    }
+  }
+  &--game_waiting {
+    align-items: flex-start;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 3rem;
+    text-shadow: 0 0 3px rgba(0,0,0,.5);
+    #playerCount {
+      font-size: 2rem;
+    }
+    #playerList {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+
+      >div {
+        font-size: 2.5rem;
+        padding: 2rem;
+      }
+
+      .inactive {
+        opacity: .75;
+        > div {
+          font-size: 1.5rem;
+          font-style: italic;
+        }
+      }
+    }
+    #start_game {
+      height: 3rem;
+      padding: 1rem 2rem;
+    }
+  }
+  #waitingForPlayers {
+    align-self: flex-end;
+    background: linear-gradient(320deg, #000 0%, #333 100%);
+    color: #fff;
+    font-size: 2rem;
+    height: 3em;
+    margin: 0 -15rem -3rem -3rem;
+    padding: 1.5rem 1rem;
+    text-shadow: 0 0 3px rgba(0,0,0,.5);
+    width: 100vw;
+
+    i {
+      border: 3px solid #fff;
+      border-radius: 100%;
+      box-shadow: 0 0 3px rgba(0,0,0,.5), inset 0 0 3px rgba(0,0,0,.35);
+      display: inline-block;
+      font-size: 1.75rem;
+      height: 1.85em;
+      margin: 0 .5rem 0 0;
+      padding: .2em 0 0;
+      text-align: center;
+      width: 1.85em;
+    }
+  }
+
+  &--question_countdown{
+    align-items:center;
+    flext-wrap: wrap;
+    h1 {
+      margin: 0 auto 2rem;
+    }
+
+    #countdown {
+      font-size: 6rem;
+      margin-top: 0;
+      width: 100%;
+    }
+    #question {
+      background: #fff;
+      color: #000;
+      font-family: montserratbold;
+      font-size: 2rem;
+      margin: 0 5rem;
+      padding: 2rem 2rem;
+      position: relative;
+      text-shadow: none;
+      &:after{
+        background: #000;
+        bottom: -1rem;
+        content: '';
+        display: block;
+        left: 0;
+        height: 1rem;
+        position: absolute;
+        width: 100%;
+        animation: questionTimerWidth 5s linear 1;
+
+        @keyframes questionTimerWidth {
+          0% {
+            width: 0%
+          }
+
+          100% {
+            width: 100%;
+          }
+        }
+      }
+
+    }
+  }
+
+  &--select_answers {
+    padding: 0;
+    h1 {
+      align-items: center;
+      display: flex;
+      font-size: 2.4rem;
+      max-width: 84%;
+      line-height: 1.5em;
+
+      #answerCountdown {
+        align-items: center;
+        background: rgba(51,51,51,1) radial-gradient(circle, rgba(17,17,17,1) 50%, rgba(51,51,51,1) 50%) no-repeat center center;
+        background-size: 0;
+        animation: gradientspin 1s linear infinite;
+        color: #fff;
+        display: flex;
+        font-family: montserratbold;
+        font-size: 3rem;
+        justify-content: center;
+        margin: 0 1.75rem 0 0;
+        min-height: 2.25em;
+        min-width: 2.25em;
+
+        &.countdownExpired {
+          animation: none;
+        }
+
+        @keyframes gradientspin {
+          0% {
+            background-size: 0;
+          }
+
+          100% {
+            background-size: 500%;
+          }
+        }
+      }
+    }
+    @import 'answers';
+  }
+  &--question_result {
+    padding: 0;
+    h1 {
+      font-size: 2.4rem;
+      line-height: 1.5em;
+      max-width: 84%;
+      width: 100%;
+    }
+
+    #host--select_answers-answers {
+      height: 30vh;
+    }
+
+    &_chart{
+      display: flex;
+      justify-content: space-around;
+      max-width: calc(4 * 11rem);
+      min-height: 20vh;
+      width: 100%;
+
+      .result {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-end;
+        min-width: 10rem;
+
+        &__bar {
+          transition: height 3s ease;
+          width: 100%;
+        }
+
+        &:nth-child(1) {
+          .result__total {
+            background-image: $redFade;
+          }
+        }
+        &:nth-child(2) {
+          .result__total {
+            background-image: $greenFade;
+          }
+        }
+        &:nth-child(3) {
+          .result__total {
+            background-image: $blueFade;
+          }
+        }
+        &:nth-child(4) {
+          .result__total {
+            background-image: $orangeFade;
+          }
+        }
+
+        &__total {
+          align-items: center;
+          display: flex;
+          font-size: 4rem;
+          justify-content: center;
+          width: 100%;
+
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+
+          i {
+            margin-right: .75rem;
+          }
+        }
+
+        &__symbol {
+          align-items: center;
+          color: #fff;
+          display: flex;
+          height: 2rem;
+          font-size: 1.5rem;
+          justify-content: center;
+          width: 100%;
+          transform: scaleX(-1);
+          &:before {
+            font-family: 'Font Awesome 5 Free';
+            transform: scaleX(-1);
+          }
+        }
+
+
+        &:nth-child(1) {
+          .result__bar{
+            background: $redFade;
+          }
+          .result__symbol {
+            background: $redFade;
+            &:before {
+              content: "\F04B";
+              //play
+            }
+          }
+        }
+        &:nth-child(2) {
+          .result__bar{
+            background: $greenFade;
+          }
+          .result__symbol {
+            background: $greenFade;
+            &:before {
+              content: "\F0C8";
+              //square
+            }
+          }
+        }
+        &:nth-child(3) {
+          .result__bar{
+            background: $blueFade;
+          }
+          .result__symbol {
+            background: $blueFade;
+            &:before {
+              content: "\F111";
+              //circle
+            }
+          }
+        }
+        &:nth-child(4) {
+          .result__bar{
+            background: $orangeFade;
+          }
+          .result__symbol {
+            background: $orangeFade;
+            &:before {
+              content: "\F005";
+              //star
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &--scoreboard {
+    h1 {
+      font-size: 3.5rem;
+      margin: 0 auto 2rem;
+    }
+    div {
+      width: 100%;
+    }
+    #scoreboard {
+      font-family: montserratsemibold;
+      font-size: 2.5rem;
+      margin: 0 auto;
+      min-width: 320px;
+
+      width: 50%;
+      > div {
+        align-items: center;
+        display: flex;
+        padding: 1rem 2rem;
+        & + div {
+          margin-top: 1rem;
+        }
+        &:nth-child(odd) {
+          background: rgba(0,0,0,.15);
+        }
+        &:nth-child(even) {
+          background: rgba(255,255,255,.15);
+        }
+      }
+    }
+    .scoreboard__player_name {
+      text-align: left;
+      display: flex;
+      align-items: center;
+      &.inactive{
+        opacity: .75;
+        > i {
+          margin-right: 1rem;
+        }
+        > span {
+          font-size: 1.5rem;
+          font-style: italic;
+          margin-left: 1rem;
+        }
+      }
+    }
+    .scoreboard__player_points {
+      text-align: right;
+    }
+  }
+
+  &--overall_results{
+    h1 {
+      background: #fff;
+      color: #000!important;
+      font-size: 2.25rem;
+      margin: 0 25%;
+      padding: 2rem 4rem;
+      text-shadow: none;
+      width: 50%;
+    }
+
+    #podium {
+      align-items: flex-end;
+      display: flex;
+      justify-content: center;
+      font-family: montserratbold;
+      font-size: 1.75rem;
+      width: 800px;
+      >div {
+        align-items: flex-end;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 1%;
+        width: 32%;
+        &#podium__first {
+          order: 2;
+          .podium {
+            height: 42vh;
+          }
+          .medal .points {
+            background-image: $orangeFade;
+          }
+        }
+        &#podium__second {
+          order: 1;
+          .podium {
+            height: 38vh;
+          }
+          .medal .points {
+            background-image: $blueFade;
+          }
+        }
+        &#podium__third {
+          order: 3;
+          .podium {
+            height: 34vh;
+          }
+          .medal .points {
+            background-image: $greenFade;
+          }
+        }
+      }
+
+      .podium {
+        background: #fff;
+        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(238,238,238,1) 100%);
+        box-shadow: 0 0 4px rgba(0,0,0,.25);
+        color: #000;
+        position: relative;
+        text-shadow: none;
+        width: 100%;
+
+        &:after {
+          background: linear-gradient(180deg, rgba(255,255,255,.5) 0%, rgba(238,238,238,0) 100%);
+          border-top: 1px solid rgba(228,228,228,1);
+          content: "";
+          display: block;
+          height: 40px;
+          bottom: -40px;
+          left: 0;
+          position: absolute;
+          filter: blur(1px);
+          right: 0;
+        }
+
+        &_name {
+          margin: 0 0 1rem;
+          text-align: center;
+          width: 100%;
+        }
+
+        @import "medals";
+        .medal {
+          &_ribbons{
+            &:before, &:after{
+              top: -32px;
+            }
+          }
+          .points {
+            color: #000;
+            color: transparent;
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-image: $redFade;
+            margin: 1rem 0 1rem;
+          }
+        }
+
+      }
+    }
+  }
+
+  #session_controls {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    height: 5vh;
+    button{
+      margin: .5rem;
+    }
+  }
+}
