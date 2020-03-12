@@ -12,7 +12,7 @@
     <meta name="apple-mobile-web-app-title" content="Jawoot!">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <link rel='shortcut icon' type='image/x-icon' href="/imgs/favicon-16x16.png"/>
+    <link rel='shortcut icon' id="favicon" type="image/x-icon" href="/imgs/favicon-16x16.png"/>
     <link rel="apple-touch-icon" href="/imgs/apple-icon-152x152.png">
     <link rel="icon" sizes="192x192" href="/imgs/pwa-icon-192x192.png">
     <link rel="icon" sizes="512x512" href="/imgs/pwa-icon-512x512.png">
@@ -38,6 +38,12 @@
 
     <link rel="manifest" href="/manifest.json">
     <link href='/css/app.css' rel='stylesheet' type='text/css' />
+    <script>
+    var favicons = ['favicon-16x16_all.png','favicon-16x16_red.png','favicon-16x16_blue.png','favicon-16x16_green.png','favicon-16x16_orange.png'],
+      favicon = favicons[Math.floor(Math.random()*favicons.length)],
+      faviconElem = document.getElementById('favicon');
+    faviconElem.href = "/imgs/"+favicon;
+    </script>
   </head>
   <body>
     <div id="app_wrapper">
