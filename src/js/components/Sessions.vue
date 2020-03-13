@@ -19,7 +19,7 @@
         <div class="item_actions">
           <router-link :to="{ name: 'SessionInfo', params: {code:session.code}, query: {completed: $route.query.completed == '1' ? 1 : null} }" class=""><i class="fas fa-info-circle" title="Quiz Info"></i></router-link>
           <router-link :to="{ name: 'SessionInfo', params: {code:session.code}, query: { delete: 1, completed: $route.query.completed == '1' ? 1 : null }  }"><i class="fas fa-trash-alt" title="Delete Session"></i></router-link>
-          <router-link :to="{ name: 'HostControl', params: {code:session.code}, query: {completed: $route.query.completed == '1' ? 1 : null} }"><i class="fas fa-chalkboard-teacher"></i></router-link>
+          <router-link :to="{ name: 'HostControl', params: {code:session.code} }"><i class="fas fa-chalkboard-teacher"></i></router-link>
         </div>
       </div>
     </template>
