@@ -2,9 +2,9 @@
 
 [Installation Instructions](#installation-instructions)
 
-[Screenshots](#screenshots)
-
 [Using Jawoot!](#using-jawoot)
+
+[Screenshots](#screenshots)
 
 [Todo](#todo)
 
