@@ -3,11 +3,7 @@
     <h1 :class="fade">Jawoot!</h1>
     <div :class="'loading '+fade">
       Sorry, there was an error an establishing a connection with the server...
-      !window.serverURI={{serverURI}}<br />
-      !window.apiURI={{apiURI}}<br />
-      !window.socketIOURI={{socketIOURI}}<br />
     </div>
-
   </div>
 </template>
 
@@ -28,6 +24,9 @@
       this.serverURI = window.serverURI;
       this.apiURI = window.apiURI;
       this.socketIOURI = window.socketIOURI;
+      console.error('window.serverURI', window.serverURI);
+      console.error('window.apiURI', window.apiURI);
+      console.error('window.socketIOURI', window.socketIOURI);
     },
     methods: {
       setBGColor(color) {
