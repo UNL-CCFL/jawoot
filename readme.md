@@ -26,7 +26,12 @@ Jawoot was designed and developed through funding from the [Center on Children, 
     `git clone https://github.com/UNL-CCFL/jawoot.git`
 
 2. Install the node modules:
+
     `npm install`
+
+  and install knex.js locally
+
+    `npm install -g knex`
 
 3. Copy `.env.example` to `.env` and update the env variables accordingly.
 
