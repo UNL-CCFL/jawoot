@@ -29,7 +29,7 @@ Jawoot was designed and developed through funding from the [Center on Children, 
 
     `npm install`
 
-  and install knex.js locally
+  and install knex.js globally to run migrations and seeders later
 
     `npm install -g knex`
 
