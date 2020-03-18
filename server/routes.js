@@ -6,8 +6,9 @@ const quizSession = require('./quizSession');
 const {LoggedInUser} = require('./LoggedInUser');
 const session = require("express-session");
 const Token = require('csrf');
-
 const CSRF = new Token();
+const dotenv = require('dotenv');
+dotenv.config();
 
 function requireCSRF(request, response, next) {
   if (CSRF.verify(request.session.csrf_secret, request.headers['x-csrf-token'])) {
@@ -44,7 +45,6 @@ router.post("/session", (request, response, next) => {
 
 router.post("/login", (request, response, next) => {
 
-    console.log("AAAAAAA2")
   let username = request.body.username,
     password = request.body.password,
     authedUser = new LoggedInUser(username);
@@ -59,7 +59,7 @@ router.post("/login", (request, response, next) => {
         request.session.csrf_token = CSRF.create(request.session.csrf_secret);
         request.session.save();
         return response.status(200)
-          .header("Access-Control-Allow-Origin", "http://192.168.0.146")
+          .header("Access-Control-Allow-Origin", `${process.env.PROTOCOL}://${process.env.HOST}`)
           .json({
             message: "Success!",
             user: request.session.user,
