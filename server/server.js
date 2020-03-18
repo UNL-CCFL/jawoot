@@ -221,14 +221,15 @@ io.on('connection', function(socket){
       if (ActiveSessions[params.session_code] != undefined) {
         if (1==1 || ActiveSessions[params.session_code].gameStarted == false) {
           if (params.socket_id != undefined) {
-            if (Players[params.socket_id] !== undefined) {
+            //rejoin a player who is reconnecting only to the same session
+            if (Players[params.socket_id] !== undefined && params.session_code == Players[params.socket_id].session_code) {
               Players[socket.id] = JSON.parse(JSON.stringify(Players[params.socket_id]));
               Players[socket.id].socket_id = socket.id;
               if (params.session_name !== undefined && params.session_name != '') {
                 Players[socket.id].name = params.session_name;
               }
+              delete Players[params.socket_id];
             }
-            delete Players[params.socket_id];
             ActiveSessions[params.session_code].removePlayer(params.socket_id);
           }
           if (Players[socket.id] === undefined) {
