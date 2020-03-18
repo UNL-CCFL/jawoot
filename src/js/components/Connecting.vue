@@ -1,7 +1,7 @@
 <template>
   <div id="loading">
     <h1 :class="fade">Jawoot!</h1>
-    <i class="waiting fas fa-circle-notch fa-spin"></i>
+    <i :class="'waiting fas fa-circle-notch fa-spin '+fade"></i>
     <div :class="'loading '+fade">Connecting...</div>
   </div>
 </template>
