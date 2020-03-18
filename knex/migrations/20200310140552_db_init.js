@@ -46,7 +46,7 @@ exports.up = function(knex) {
     table.timestamp('deleted_at')
   }).then();
 
-  knex.schema.createTable('users', table => {
+  return knex.schema.createTable('users', table => {
     table.increments('user_id')
     table.string('username', 20).notNullable()
     table.string('salt', 32).notNullable()
