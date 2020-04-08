@@ -13,19 +13,24 @@
         <input type="text" v-model="searchingFor" v-on:keyup="searchQuizzes" placeholder="Search users..."/>
       </div>
     </div>
-    <div :class="'item_wrapper box '+($route.params.id == quiz.quiz_id ? 'selected' : '')" v-for="(quiz, index) in quizzes">
-      <div class="item_details">
-        <h3>{{quiz.title}}</h3>
-        <span>{{quiz.questions.length}} Question<template v-if="quiz.questions.length == 0 || quiz.questions.length > 1">s</template></span>
-        <span>{{quiz.quiz_attempts}} Play<template v-if="quiz.quiz_attempts == 0 || quiz.quiz_attempts > 1">s</template></span>
-        <span>{{getAverageScore(index)}}% average</span>
+    <template v-if="Object.keys(quizzes).length > 0">
+      <div :class="'item_wrapper box '+($route.params.id == quiz.quiz_id ? 'selected' : '')" v-for="(quiz, index) in quizzes">
+        <div class="item_details">
+          <h3>{{quiz.title}}</h3>
+          <span>{{quiz.questions.length}} Question<template v-if="quiz.questions.length == 0 || quiz.questions.length > 1">s</template></span>
+          <span>{{quiz.quiz_attempts}} Play<template v-if="quiz.quiz_attempts == 0 || quiz.quiz_attempts > 1">s</template></span>
+          <span>{{getAverageScore(index)}}% average</span>
+        </div>
+        <div class="item_actions">
+          <router-link :to="{ name: 'QuizInfo', params: {id:quiz.quiz_id} }"><i class="fas fa-info-circle" title="Quiz Info"></i></router-link>
+          <router-link :to="{ name: 'QuizEdit', params: {id:quiz.quiz_id} }"><i class="fas fa-pencil-alt" title="Edit Quiz"></i></router-link>
+          <router-link :to="{ name: 'QuizEdit', params: {id:quiz.quiz_id}, query: { delete: 1 }  }"><i class="fas fa-trash-alt" title="Delete Quiz"></i></router-link>
+          <a href="#" @click.prevent='newQuizSession(quiz.quiz_id)' :class="{'disabled' : quiz.questions.length == 0}"><i class="fas fa-plus-square" title="New Session"></i></a>
+        </div>
       </div>
-      <div class="item_actions">
-        <router-link :to="{ name: 'QuizInfo', params: {id:quiz.quiz_id} }"><i class="fas fa-info-circle" title="Quiz Info"></i></router-link>
-        <router-link :to="{ name: 'QuizEdit', params: {id:quiz.quiz_id} }"><i class="fas fa-pencil-alt" title="Edit Quiz"></i></router-link>
-        <router-link :to="{ name: 'QuizEdit', params: {id:quiz.quiz_id}, query: { delete: 1 }  }"><i class="fas fa-trash-alt" title="Delete Quiz"></i></router-link>
-        <a href="#" @click.prevent='newQuizSession(quiz.quiz_id)' :class="{'disabled' : quiz.questions.length == 0}"><i class="fas fa-plus-square" title="New Session"></i></a>
-      </div>
+    </template>
+    <div v-else>
+      No quizzes were found.
     </div>
   </div>
 </template>
