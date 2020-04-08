@@ -122,7 +122,6 @@
         this.quiz.removedQuestions = this.removedQuestions;
         this.$validator.validate().then(valid => {
           if (valid && !this.isSaving) {
-            console.log('savequiz saving')
             this.isSaving = true;
             setTimeout(function() {
               axios.post(window.apiURI+"/api/quiz/"+(self.quiz.quiz_id != 0 ? self.quiz.quiz_id : ''),
@@ -132,13 +131,15 @@
                   self.statusMessage = "Quiz was successfully saved!";
                   setTimeout(function(){
                     self.statusMessage = null;
-                  }, 3500)
+                  }, 3500);
+                  self.$set(self, 'quiz', response.data.quiz);
                   EventBus.$emit('quizUpdated', self.quiz);
                 })
                 .catch(function(response){
                   self.isSaving = false;
                   self.hasError = true;
                   self.statusMessage = "Sorry, an error occurred. Please try again or contact support if the error persists.";
+                  console.log("!!!!!!!",response);
                 });
             }, 500)
           }
