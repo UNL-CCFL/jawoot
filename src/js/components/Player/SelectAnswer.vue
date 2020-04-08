@@ -1,5 +1,6 @@
 <template>
   <div id="player--select_answers" v-if="question">
+    <h2>{{question.question}}</h2>
     <div id="player--select_answers-answers" :class="elemClass">
       <button v-for="(answer, index) in question.answers"
         v-on:click="answered(answer.answer_id)"
