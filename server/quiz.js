@@ -283,7 +283,7 @@ module.exports = {
             .del().then();
         }
 
-        await module.exports.fetchArray(quiz.id).then((quiz) => {
+        await module.exports.fetchArray(quiz.quiz_id).then((quiz) => {
           return response.status(200).send({success: true, quiz: quiz})
         })
         .catch(function(error) {
