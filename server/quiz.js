@@ -283,7 +283,12 @@ module.exports = {
             .del().then();
         }
 
-        return response.status(200).json({quiz: quiz});
+        await module.exports.fetchArray(quiz.id).then((quiz) => {
+          return response.status(200).send({success: true, quiz: quiz})
+        })
+        .catch(function(error) {
+          return response.status(500).json({'message': 'Error saving and fetching quiz'});
+        });
     }
     else {
       return response.status(404).json({'message': 'Quiz not found'});
@@ -327,8 +332,12 @@ module.exports = {
           console.log("question", quiz.questions[i])
         }
       }
-
-      return response.status(200).send({success: true, quiz: quiz})
+      await module.exports.fetchArray(quiz.quiz_id).then((quiz) => {
+        return response.status(200).send({success: true, quiz: quiz})
+      })
+      .catch(function(error) {
+        return response.status(500).json({'message': 'Error saving and fetching quiz'});
+      });
     });
   },
   delete: (request, response, next) => {
