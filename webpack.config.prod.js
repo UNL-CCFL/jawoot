@@ -4,6 +4,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const {VueLoaderPlugin} = require('vue-loader')
 const CopyPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
+var webpack = require('webpack');
+const dotenv = require('dotenv');
+dotenv.config();
 
 module.exports = {
     mode: 'production',
