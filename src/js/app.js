@@ -3,9 +3,9 @@ import VueRouter from 'vue-router';
 import VueSocketIOExt from 'vue-socket.io-extended';
 import io from 'socket.io-client'
 
-window.serverURI = window.location.protocol+"//"+window.location.host+"";
-window.apiURI = window.location.protocol+"//"+window.location.host+":3001";
-window.socketIOURI = window.location.protocol+"//"+window.location.host+":3000";
+window.serverURI = window.location.protocol+"//"+window.location.hostname+"";
+window.apiURI = window.location.protocol+"//"+window.location.hostname+":"+process.env.APIPORT;
+window.socketIOURI = window.location.protocol+"//"+window.location.hostname+":"+process.env.SOCKETIOPORT;
 
 Vue.use(VueRouter);
 

@@ -138,7 +138,17 @@
       }
     },
     mounted() {
-
+      //detect when device sleeps, if last time is more than SLEEPTIME device
+      //has slept or tab lost focus. refresh page to get user back in game
+      var SLEEPTIME = 5000;
+      var lastTime = (new Date()).getTime();
+      setInterval(function() {
+        var currentTime = (new Date()).getTime();
+        if (currentTime > (lastTime + SLEEPTIME + 2000)) {
+          window.location.reload();
+        }
+        lastTime = currentTime;
+      }, SLEEPTIME);
     },
     beforeDestroy() {
       this.$socket.client.emit("playerLeave", {session_code: this.session.code});
@@ -204,7 +214,7 @@
       countdown() {
         let self = this;
         this.countingDownToGameStart = true;
-        setTimeout(function() {
+        setSLEEPTIME(function() {
           self.howManySeconds--;
           if (self.howManySeconds !== 0) {
             self.countdown();
@@ -218,7 +228,7 @@
 
       timerCountdown() {
         let self = this;
-        setTimeout(function() {
+        setSLEEPTIME(function() {
           self.timeLeft--;
           if (self.timeLeft > 0) {
             self.timerCountdown();
