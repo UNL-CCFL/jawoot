@@ -2,6 +2,8 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueSocketIOExt from 'vue-socket.io-extended';
 import io from 'socket.io-client'
+const dotenv = require('dotenv');
+dotenv.config();
 
 window.serverURI = window.location.protocol+"//"+window.location.hostname+"";
 window.apiURI = window.location.protocol+"//"+window.location.hostname+":"+process.env.APIPORT;
