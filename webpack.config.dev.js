@@ -4,6 +4,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const {VueLoaderPlugin} = require('vue-loader')
 const CopyPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
+var webpack = require('webpack');
+const dotenv = require('dotenv');
+dotenv.config();
 
 module.exports = {
   mode: 'development',
@@ -87,3 +90,14 @@ module.exports = {
     extensions: ['*', '.js', '.json']
   },
 }
+
+module.exports.devtool = '#source-map'
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"development"',
+        SOCKETIOPORT: process.env.SOCKETIOPORT,
+        APIPORT: process.env.APIPORT,
+      }
+    }),
+  ])

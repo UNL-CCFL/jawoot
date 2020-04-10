@@ -225,6 +225,7 @@ io.on('connection', function(socket){
             if (Players[params.socket_id] !== undefined && params.session_code == Players[params.socket_id].session_code) {
               Players[socket.id] = JSON.parse(JSON.stringify(Players[params.socket_id]));
               Players[socket.id].socket_id = socket.id;
+              console.log(Players[socket.id]);
               if (params.session_name !== undefined && params.session_name != '') {
                 Players[socket.id].name = params.session_name;
               }

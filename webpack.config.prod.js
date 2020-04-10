@@ -84,3 +84,14 @@ module.exports = {
         extensions: ['*', '.js', '.json']
     },
 }
+
+module.exports.devtool = '#source-map'
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"',
+        SOCKETIOPORT: process.env.SOCKETIOPORT,
+        APIPORT: process.env.APIPORT,
+      }
+    }),
+  ])
